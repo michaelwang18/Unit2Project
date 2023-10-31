@@ -21,7 +21,7 @@ public class LinearEquation {
         distance = Math.abs((slope * x2 + yIntercept) - (slope * x1 + yIntercept));
     }
 
-    public double coordinateForX(int xval){
+    public double coordinateForX(double xval){
         return slope * xval + yIntercept;
     }
     public String equation(){
@@ -46,7 +46,7 @@ public class LinearEquation {
             b = "";
         }
 
-        return coeff + mx + "+" + b;
+        return coeff + mx + " + " + b;
     }
 
     public double getSlope() {return slope;}
@@ -58,7 +58,7 @@ public class LinearEquation {
     }
 
     public String lineInfo() {
-        String resp = "The Two Points Are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")";
+        String resp = "The Two Points Are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")" + "\n";
         resp += "The Equation Of The Line Between The Two Points Is: " + equation() + "\n";
         resp += "The Slope Of The Equation Is: " + getSlope() + "\n";
         resp += "The y-Intercept Of The Equation Is: " + getYIntercept() + "\n";

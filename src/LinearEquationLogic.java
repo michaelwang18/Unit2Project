@@ -39,13 +39,13 @@ public class LinearEquationLogic {
     public void welcome(){
         System.out.println("Welcome to Linear Equation Calc \nWhat is your first coordinate");
         cord1 = scan.nextLine();
-         x1 = Integer.parseInt(cord1.substring(1,cord1.indexOf(",")));
-         y1 = Integer.parseInt(cord1.substring(cord1.indexOf(" ") + 1,cord1.indexOf(")")));
+        x1 = Integer.parseInt(cord1.substring(1,cord1.indexOf(",")));
+        y1 = Integer.parseInt(cord1.substring(cord1.indexOf(" ") + 1,cord1.indexOf(")")));
         System.out.println("What is your second coordinate?");
         cord2 = scan.nextLine();
-         x2 = Integer.parseInt(cord2.substring(1,cord2.indexOf(",")));
-         y2 = Integer.parseInt(cord2.substring(cord2.indexOf(" ") + 1,cord2.indexOf(")")));
-         calc = new LinearEquation(x1,y1,x2,y2);
+        x2 = Integer.parseInt(cord2.substring(1,cord2.indexOf(",")));
+        y2 = Integer.parseInt(cord2.substring(cord2.indexOf(" ") + 1,cord2.indexOf(")")));
+        calc = new LinearEquation(x1,y1,x2,y2);
 
     }
 
@@ -63,7 +63,7 @@ public class LinearEquationLogic {
         if (x1 != x2 && y1 != y2) {
             System.out.println(calc.lineInfo());
         }
-      //  return resp;
+        //  return resp;
 
     }
 }

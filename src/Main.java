@@ -41,3 +41,6 @@ public class Main {
         System.out.println(eq13.equation());
         System.out.println(eq14.equation());
         System.out.println(eq15.equation());
+
+    }
+}
