@@ -1,4 +1,5 @@
 
+import javax.sound.sampled.Line;
 import java.util.Scanner;
 
 public class LinearEquationLogic {
@@ -11,8 +12,9 @@ public class LinearEquationLogic {
     int y2;
     int x2;
 
+    LinearEquation calc;
+
     Scanner scan = new Scanner(System.in);
-    LinearEquation calc = new LinearEquation();
 
     //Constructor
     public LinearEquationLogic(){
@@ -22,7 +24,11 @@ public class LinearEquationLogic {
     public void start(){
         while (!finished){
             welcome();
-            System.out.println(response());
+            response();
+            if (x1 != x2 && y1 != y1){
+                System.out.println("Enter a Coordinate for X");
+                System.out.println();
+            }
         }
         //"main" so to say
 
@@ -39,26 +45,25 @@ public class LinearEquationLogic {
         cord2 = scan.nextLine();
          x2 = Integer.parseInt(cord2.substring(1,cord2.indexOf(",")));
          y2 = Integer.parseInt(cord2.substring(cord2.indexOf(" ") + 1,cord2.indexOf(")")));
-
-
+         calc = new LinearEquation(x1,y1,x2,y2);
 
     }
 
-    public String response() {
+    public void response() {
         String resp = "";
-        if (x1 == x2) {
-            return "These Points Are On The Horizontal Line X = " + x1;
-        } else if (y1 == y2) {
-            return "These Points Are On The Vertical Line Y = " + y1;
+        if (x1 == x2 && y1 == y2){
+            System.out.println("Same Exact Point");
+        }
+        if (x1 == x2 && y1 != y2) {
+            System.out.println("These Points Are On The Horizontal Line X = " + x1);
+        }
+        if (y1 == y2 && x1 != x2) {
+            System.out.println("These Points Are On The Vertical Line Y = " + y1);
         }
         if (x1 != x2 && y1 != y2) {
-            resp += "The Two Points Are: " + cord1 + " And " + cord2 + "\n";
-            resp += "The Equation Of The Line Between The Two Points Is: " + "placehold" + "\n";
-            resp += "The Slope Of The Equation Is: " + calc.findSlope(x1, y1, x2, y2) + "\n";
-            resp += "The y-Intercept Of The Equation Is: " + calc.yIntercept(x1, y1, x2, y2) + "\n";
-            resp += "The Distance Between The 2 Coordinates Is: " + calc.distanceBetween(x1, y1, x2, y2) + "\n";
+            System.out.println(calc.lineInfo());
         }
-        return resp;
+      //  return resp;
 
     }
 }
