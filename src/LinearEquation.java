@@ -28,34 +28,54 @@ public class LinearEquation {
         int xx = x2 - x1;
         int yy = y2 - y1;
         String coeff = " ";
-        String mx = xx + "/" + yy;
-        String b = String.valueOf(yIntercept);
+        String mx = Math.abs(yy) + "/" + Math.abs(xx);
+        String firstHalf = "";
+        String plus = "";
+        String b = String.valueOf(getYIntercept());
         double slopeValue = slope;
-        if (slopeValue == (int)(slopeValue * 100)/100.0){
+        if (slopeValue == getSlope()){
             mx = String.valueOf(slopeValue);
+        }
+
+        if (slopeValue == 1){
+            mx = "";
         }
 
         if (xx < 0 || yy < 0){
             coeff = "-";
         }
         if (xx < 0 && yy < 0){
-            coeff = " ";
+            coeff = "";
         }
 
         if (yIntercept == 0){
             b = "";
         }
 
-        return coeff + mx + " + " + b;
+        if (slopeValue != 0){
+            firstHalf = "" + coeff + mx + "x";
+        }
+
+        if (slopeValue != 0 && yIntercept != 0){
+            plus = " + ";
+        }
+
+        if (slopeValue == 0 && yIntercept == 0){
+            return "y = 0";
+        }
+
+        if (firstHalf.indexOf("--") != -1){
+            firstHalf = firstHalf.substring(1);
+        }
+
+        return "y = " + firstHalf + plus + b;
     }
 
-    public double getSlope() {return slope;}
-    public double getYIntercept(){return yIntercept;}
-    public double getDistance(){return distance;}
+    public double getSlope() {return roundto100th(slope);}
+    public double getYIntercept(){return roundto100th(yIntercept);}
+    public double getDistance(){return roundto100th(distance);}
 
-    public double roundto100th(double num){
-        return Math.round(num * 100)/100;
-    }
+    public double roundto100th(double num){ return (double) (Math.round(Math.round(num * 1000)) / 100) /10; }
 
     public String lineInfo() {
         String resp = "The Two Points Are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " + y2 + ")" + "\n";

@@ -11,7 +11,6 @@ public class LinearEquationLogic {
     String cord2;
     int y2;
     int x2;
-
     LinearEquation calc;
 
     Scanner scan = new Scanner(System.in);
@@ -25,9 +24,16 @@ public class LinearEquationLogic {
         while (!finished){
             welcome();
             response();
-            if (x1 != x2 && y1 != y1){
+            if (x1 != x2 && y1 != y2){
                 System.out.println("Enter a Coordinate for X");
-                System.out.println();
+                System.out.println(calc.coordinateForX(scan.nextDouble()));
+            }
+            System.out.println("Are you done with Linear Equation Calculator? (y/n)");
+            if (scan.nextLine().equals("n")){
+                System.out.println("Ok. Goodbye!");
+                finished = true;
+            } else {
+                System.out.println("\n\n |---------------------------------------------| \n\n");
             }
         }
         //"main" so to say
@@ -37,7 +43,7 @@ public class LinearEquationLogic {
 
 
     public void welcome(){
-        System.out.println("Welcome to Linear Equation Calc \nWhat is your first coordinate");
+        System.out.println("Welcome to Linear Equation Calculator \nWhat is your first coordinate");
         cord1 = scan.nextLine();
         x1 = Integer.parseInt(cord1.substring(1,cord1.indexOf(",")));
         y1 = Integer.parseInt(cord1.substring(cord1.indexOf(" ") + 1,cord1.indexOf(")")));
